@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioModel } from 'src/app/models/usuario.model';
-import { NgForm } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
+import { UsuarioModel } from '../../models/usuario.model';
+import { AuthService } from '../../services/auth.service';
+
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -11,21 +14,19 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
 
-  usuario: UsuarioModel = new UsuarioModel();
+  usuario: UsuarioModel;
   recordarme = false;
 
-
-  constructor(private auth:AuthService,
-              private router: Router) { }
+  constructor( private auth: AuthService,
+               private router: Router ) { }
 
   ngOnInit() {
     this.usuario = new UsuarioModel();
-    /* this.usuario.email = 'fernando.herrera85@gmail.com'; */
   }
 
-  onSubmit( form: NgForm){
+  onSubmit( form: NgForm ) {
 
-    if( form.invalid){return}
+    if ( form.invalid ) { return; }
 
     Swal.fire({
       allowOutsideClick: false,
@@ -55,4 +56,6 @@ export class RegistroComponent implements OnInit {
         });
       });
   }
+
+
 }
